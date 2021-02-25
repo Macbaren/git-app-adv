@@ -1,8 +1,23 @@
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import { Navbar } from './components/Navbar'
+import { About } from './pages/About'
+import { Home } from './pages/Home'
+import { Profile } from './pages/Profile'
+
 function App() {
   return (
-    <div className="container pt-4 pl-4">
-      <h1>React Hooks</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <div className="container pt-4">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/profile/:name" component={Profile} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   )
 }
 
