@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AlertContext } from '../context/alert/AlertContext'
 
-export const Search = () => (
-  <div className="form-group">
-    <input
-      type="text"
-      className="form-control"
-      placeholder="enter users' name"
-    />
-  </div>
-)
+export const Search = () => {
+  const { show } = useContext(AlertContext)
+
+  const onSubmit = (event) => {
+    if (event.key === 'Enter') show('This is alert')
+  }
+  return (
+    <div className="form-group">
+      <input
+        type="text"
+        className="form-control"
+        placeholder="enter users' name"
+        onKeyPress={onSubmit}
+      />
+    </div>
+  )
+}
